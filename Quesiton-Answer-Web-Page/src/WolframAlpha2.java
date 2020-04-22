@@ -25,7 +25,7 @@ public class WolframAlpha2 {
 			} else if (!queryResult.isSuccess()) {
 				return "<noresults></noresults>";
 			} else {
-				StringBuffer sb = new StringBuffer("");
+				StringBuffer sb = new StringBuffer("<root>");
 				for (WAPod pod : queryResult.getPods()) {
 					sb.append("<section><title>" + pod.getTitle() + "</title><sectioncontents>");
 					for (WASubpod subpod : pod.getSubpods()) {
@@ -37,6 +37,7 @@ public class WolframAlpha2 {
 					}
 					sb.append("</sectioncontents></section>");
 				}
+				sb.append("</root>");
 				return sb.toString();
 			}
 		} catch (WAException e) {
